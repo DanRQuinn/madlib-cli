@@ -1,73 +1,20 @@
-# print welcome message
+def parse_template(template):
+  """
+  Parses a template string and returns a Template object.
 
-import re
+  Args:
+    template: The template string to parse.
 
-def welcome_message():
-    welcome_message = "Its Madlib time! Get ready to make some fun Madlibs! Fill in the blanks with funny words and see what comes out!"
+  Returns:
+    A Template object.
+  """
 
-    print(welcome_message)
-welcome_message()
+  # Import the Template class from the string module.
+  from string import Template
 
-# open the file into string
-def read_template(file_path):
-  with open('madlib.txt', "r")as file:
-    template = file.read()
-  
+  # Create a Template object using the template string as an argument.
+  template_object = Template(template)
 
-non_curly = False
-story_dictionary = ''
-story_list = []
-word_list = []
-empty_filler = ''
-ignore = ["{","}"]
-new_list = []
+  # Return the Template object.
+  return template_object
 
-# parse template into useable parts
-for char in template:
-    if char == "}":
-        word_list.append(empty_filler)
-        empty_filler = ''
-        non_curly = False
-
-    if char == "{":
-        # when changing value use single =
-        non_curly = True
-        story_dictionary = ''
-
-    if non_curly == False:
-        if char not in ignore:
-          story_dictionary += char
-
-    else:
-        if char not in ignore:
-          empty_filler += char
-
-
-# print story list
-    
-# print(word_list)
-
-# prompt user to submit words for matching spaces
-for i in word_list:  
-  user_input = input(f"enter a(n) {i}: ")
-#  take user input and populate the template with user answer
-  updated_string = new_list.append(user_input)
-
-print(new_list)
-#  give user back completed response
-
-def parse_template(template:)
-  pattern = r"\{([^}]*)\}"
-  result = re.sub(pattern, lambda word: new_list.pop(0), template)
-  print(result)
-
-def merge(stripped_template)
-
-
-
-with open('finished_madlib.txt', "w")as file:
-    template = file.write(result)
-
-if __name__ = "__main__":
-  pass
-  
